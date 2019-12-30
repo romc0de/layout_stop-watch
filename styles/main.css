@@ -10,7 +10,6 @@ body {
           align-items: center;
   width: 100vw;
   height: 100vh;
-  text-align: center;
   background: linear-gradient(-45deg, rgba(238, 119, 82, 0.6), rgba(231, 60, 126, 0.6), rgba(35, 166, 213, 0.6), rgba(35, 213, 171, 0.6));
   background-size: 300% 300%;
   -webkit-animation: gradient-bg 15s ease infinite;
@@ -19,18 +18,24 @@ body {
 .watch {
   width: 500px;
   height: 500px;
-  display: inline-block;
+  display: block;
+  position: relative;
   border-radius: 50%;
   background: #1e1e1e;
-  padding: 50px; }
+  padding: 50px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s; }
   .watch__sec {
     width: 1px;
     height: 250px;
-    position: relative;
-    left: 249px;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
     border-radius: 4px;
     background-color: #ff0037;
-    z-index: 3;
+    z-index: 1;
     -webkit-transform-origin: bottom;
             transform-origin: bottom;
     -webkit-animation: arrow-anim 60s linear infinite;
@@ -38,9 +43,9 @@ body {
   .watch__min {
     width: 6px;
     height: 200px;
-    position: relative;
-    left: 247px;
-    top: -200px;
+    position: absolute;
+    left: calc(50% - 3px);
+    bottom: calc(50% - 2px);
     border-radius: 4px;
     background-color: #4b9aaa;
     z-index: 2;
@@ -51,9 +56,9 @@ body {
   .watch__hour {
     width: 10px;
     height: 150px;
-    position: relative;
-    left: 245px;
-    top: -350px;
+    position: absolute;
+    left: calc(50% - 5px);
+    bottom: calc(50% - 5px);
     border-radius: 4px;
     background-color: #d15559;
     z-index: 1;
@@ -64,9 +69,9 @@ body {
   .watch__nail {
     width: 20px;
     height: 20px;
-    position: relative;
-    display: inline-block;
-    top: -360px;
+    position: absolute;
+    left: calc(50% - 10px);
+    bottom: calc(50% - 10px);
     background: #4b9aaa;
     border-radius: 50%;
     z-index: 4; }
@@ -102,5 +107,10 @@ body {
     background-position: 100% 50%; }
   100% {
     background-position: 0% 50%; } }
+
+@media (max-width: 750px) {
+  .watch {
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75); } }
 
 /*# sourceMappingURL=main.css.map */
